@@ -1,0 +1,45 @@
+﻿@model Timeline.Models.timeline_context
+
+@{
+	ViewBag.Title = Model.timec_title;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="p-3 text-center">
+	<div class="col-md-4 container">
+		<dl class="g-3 row">
+			<dt class="col-sm-2">
+				時間
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.timec_date.Year)年
+			</dd>
+			<dt class="col-sm-2">
+				標題
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.timec_title)
+			</dd>
+			<dt class="col-sm-2">
+				簡述
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.timec_description)
+			</dd>
+			<dt class="col-sm-2">
+				內容
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.timec_context)
+			</dd>
+		</dl>
+	</div>
+
+	@if (User.Identity!.IsAuthenticated){
+		<form asp-action="Details">
+			<input type="hidden" asp-for="timec_id"/>
+			<input type="submit" value="Delete" class="btn btn-danger"/>
+		</form>
+	}
+	<button onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-primary">返回首頁</button>
+</div>

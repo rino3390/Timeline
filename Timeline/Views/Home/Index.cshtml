@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Timeline.Models.timeline_context>
+@{
+	ViewBag.Title = "時間線產生器";
+}
+
+<div class="text-center">
+	<section class="p-3">
+		<h1>來製作你的時間線 &darr;</h1>
+	</section>
+
+	@if (Model!.Count() > 0){
+		<section class="timeline">
+			<ul class="p-3">
+				@foreach (var item in Model!){
+					<a class="text-reset text-decoration-none" asp-action="Details" asp-controller="Timeline" asp-route-id="@item.timec_id">
+						<li>
+							<div>
+								@{ var _context = item.timec_date.ToString("yyyy") + "年"; }
+								<time>@_context &nbsp;&nbsp; @item.timec_title</time>
+								@if (item.timec_description != null){
+									@item.timec_description
+								}
+							</div>
+						</li>
+					</a>
+				}
+			</ul>
+		</section>
+	}
+	else{
+		<section class="timeline-nopoint" id="timeline"></section>
+	}
+</div>
+
+@if (User.Identity!.IsAuthenticated){
+	<div class="page-right-botton" id="page-right-botton">
+		<a class="border-0 text-reset" asp-action="CreateEvent" asp-controller="Timeline">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+				<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+			</svg>
+		</a>
+	</div>
+}

@@ -1,0 +1,47 @@
+@model Timeline.ViewModel.UserCreateViewModel
+@{
+	ViewBag.Title = "註冊帳號";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mt-3 ms-3">註冊帳號</h1>
+<hr/>
+<div class="row container justify-content-center align-items-center">
+	<div class="col-md-4 container">
+		<form asp-action="Register" method="post" class="row g-3">
+			<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+			<div class="form-group">
+				<label asp-for="user_account" class="control-label"></label>
+				<input asp-for="user_account" class="form-control"/>
+				<span asp-validation-for="user_account" class="text-danger col"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="user_password" class="control-label"></label>
+				<input type="password" asp-for="user_password" class="form-control"/>
+				<span asp-validation-for="user_password" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="comparePassword" class="control-label"></label>
+				<input type="password" asp-for="comparePassword" class="form-control"/>
+				<span asp-validation-for="comparePassword" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="user_nickname" class="control-label"></label>
+				<input asp-for="user_nickname" class="form-control"/>
+				<span asp-validation-for="user_nickname" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="user_email" class="control-label"></label>
+				<input asp-for="user_email" class="form-control"/>
+				<span asp-validation-for="user_email" class="text-danger col"></span>
+			</div>
+			<div class="form-group d-flex justify-content-center">
+				<input type="submit" value="Create" class="btn btn-primary"/>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

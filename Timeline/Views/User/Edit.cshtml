@@ -1,0 +1,55 @@
+@model Timeline.Models.users
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>users</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="user_id" />
+            <div class="form-group">
+                <label asp-for="user_account" class="control-label"></label>
+                <input asp-for="user_account" class="form-control" />
+                <span asp-validation-for="user_account" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user_password" class="control-label"></label>
+                <input asp-for="user_password" class="form-control" />
+                <span asp-validation-for="user_password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user_nickname" class="control-label"></label>
+                <input asp-for="user_nickname" class="form-control" />
+                <span asp-validation-for="user_nickname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user_email" class="control-label"></label>
+                <input asp-for="user_email" class="form-control" />
+                <span asp-validation-for="user_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user_create_date" class="control-label"></label>
+                <input asp-for="user_create_date" class="form-control" />
+                <span asp-validation-for="user_create_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

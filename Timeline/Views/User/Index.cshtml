@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<Timeline.Models.users>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.user_account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_nickname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_create_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_account)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_nickname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_create_date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.user_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.user_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.user_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

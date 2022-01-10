@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	@if (ViewBag.Title == "時間線產生器"){
+		<title>時間線產生器</title>
+	}
+	else{
+		<title>@ViewBag.Title - 時間線產生器</title>
+	}
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+	<link rel="stylesheet" href="~/Timeline.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header>
+	<nav class="autohide bg-dark border-bottom mb-3 navbar navbar-dark navbar-expand-sm navbar-toggleable-sm">
+		<div class="container">
+			<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">時間線產生器</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+			        aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse d-sm-inline-flex justify-content-between navbar-collapse">
+				<partial name="_LoginPartial"/>
+			</div>
+		</div>
+	</nav>
+</header>
+<div class="container">
+	<main role="main" class="pb-3">
+		@RenderBody()
+	</main>
+</div>
+
+<footer class="border-top footer text-muted">
+	<div class="container">
+		&copy; 2022 - S07352014 張育慈製作
+	</div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

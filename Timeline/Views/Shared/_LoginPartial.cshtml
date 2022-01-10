@@ -1,0 +1,21 @@
+@using Microsoft.AspNetCore.Http.Extensions
+<ul class="navbar-nav  ms-auto">
+    @if (User.Identity!.IsAuthenticated){
+        <li class="nav-item">
+            <a id="manage" class="nav-link" title="Manage">Hello @User.Identity.Name</a>
+        </li>
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-action="LogOut" asp-controller="User">
+                <button id="logout" type="submit" class="nav-link btn btn-link">登出</button>
+            </form>
+        </li>
+    }
+    else{
+        <li class="nav-item">
+            <a class="nav-link" id="register" asp-action="Register" asp-controller="User">註冊</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="login" asp-action="LogIn" asp-controller="User" asp-route-returnUrl="@Context.Request.GetEncodedPathAndQuery()">登入</a>
+        </li>
+    }
+</ul>
